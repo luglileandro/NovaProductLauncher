@@ -1,0 +1,714 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova — Launch Faster</title>
+    <meta name="description" content="A modern, responsive, and accessible landing page template to launch products quickly.">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        :root {
+            --bg: #0b1220;
+            --panel: #0f172a;
+            --ink: #e5e7eb;
+            --muted: #9ca3af;
+            --stroke: #1f2937;
+            --brand: #0ea5e9;
+            --brand-2: #22c55e;
+            --shadow: 0 18px 40px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.03);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f8fafc;
+                --panel: #ffffff;
+                --ink: #0b0f1a;
+                --muted: #4b5563;
+                --stroke: #e5e7eb
+            }
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+            color: var(--ink);
+            background: radial-gradient(1200px 600px at 10% 0%, #0ea5e922, transparent 60%), radial-gradient(900px 700px at 100% 10%, #22c55e22, transparent 60%), linear-gradient(180deg,#0b1220 0%, #0b1220 40%, #0d1117 100%);
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #f8fafc
+            }
+        }
+
+        .container {
+            width: min(1120px,92%);
+            margin-inline: auto
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .8rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .btn-primary {
+            background: linear-gradient(180deg,var(--brand),#0284c7);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(14,165,233,.28)
+        }
+
+            .btn-primary:hover {
+                filter: brightness(1.05)
+            }
+
+        .btn-ghost {
+            background: transparent;
+            border-color: var(--stroke);
+            color: var(--ink)
+        }
+
+            .btn-ghost:hover {
+                background: rgba(255,255,255,.05)
+            }
+
+        .tag {
+            display: inline-block;
+            font-size: .78rem;
+            padding: .25rem .6rem;
+            border: 1px solid var(--stroke);
+            border-radius: 999px;
+            color: var(--muted);
+            background: rgba(255,255,255,.03)
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.25rem
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3,1fr)
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2,1fr)
+        }
+
+        @media (max-width:900px) {
+            .grid-3, .grid-2 {
+                grid-template-columns: 1fr
+            }
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(11,17,23,.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--stroke)
+        }
+
+        @media (prefers-color-scheme: light) {
+            header {
+                background: rgba(255,255,255,.75)
+            }
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 800;
+            letter-spacing: .2px
+        }
+
+            .brand svg {
+                width: 28px;
+                height: 28px;
+                display: block
+            }
+
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600
+        }
+
+            nav a:hover {
+                color: var(--ink)
+            }
+
+        .nav-ctas {
+            display: flex;
+            gap: .6rem;
+            align-items: center
+        }
+
+        .hamb {
+            display: none
+        }
+
+        @media (max-width:840px) {
+            nav {
+                display: none
+            }
+
+            .hamb {
+                display: inline-flex
+            }
+
+            .mobile {
+                display: none;
+                position: absolute;
+                inset: 64px 0 auto 0;
+                background: var(--panel);
+                border-bottom: 1px solid var(--stroke)
+            }
+
+                .mobile a {
+                    display: block;
+                    padding: 14px 6%;
+                    border-top: 1px solid var(--stroke);
+                    text-decoration: none;
+                    color: var(--ink)
+                }
+
+                    .mobile a:hover {
+                        background: rgba(255,255,255,.05)
+                    }
+
+                .mobile.open {
+                    display: block
+                }
+        }
+
+        main section {
+            padding: 56px 0
+        }
+
+        .head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 18px
+        }
+
+            .head p {
+                color: var(--muted);
+                max-width: 680px
+            }
+
+        .hero {
+            padding: 72px 0 40px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .blob {
+            position: absolute;
+            right: -140px;
+            top: -140px;
+            width: 420px;
+            height: 420px;
+            filter: blur(30px);
+            opacity: .25;
+            background: conic-gradient(from 90deg,var(--brand),var(--brand-2),#a78bfa,var(--brand));
+            border-radius: 50%
+        }
+
+        @media (max-width:840px) {
+            .blob {
+                right: -200px;
+                top: -200px;
+                opacity: .18
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(1.9rem,3.2vw + 1rem,3.4rem);
+            line-height: 1.1;
+            margin: .6rem 0
+        }
+
+        .hero p {
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 1.05rem
+        }
+
+        .hero .actions {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-top: 1.1rem
+        }
+
+        .glass {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+            background: linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+            border: 1px solid var(--stroke);
+            border-radius: 18px;
+            padding: 16px 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: var(--shadow)
+        }
+
+            .card h3 {
+                margin: .2rem 0 .4rem;
+                font-size: 1.1rem
+            }
+
+        .icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: linear-gradient(180deg,rgba(14,165,233,.18),rgba(14,165,233,.08));
+            border: 1px solid var(--stroke)
+        }
+
+        blockquote {
+            margin: 0
+        }
+
+        .quote {
+            display: flex;
+            gap: 14px
+        }
+
+            .quote img {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                border: 1px solid var(--stroke);
+                object-fit: cover
+            }
+
+            .quote .who {
+                color: var(--muted);
+                font-size: .92rem
+            }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: .35rem;
+            margin: .2rem 0 .8rem
+        }
+
+            .price .big {
+                font-size: 2rem;
+                font-weight: 800
+            }
+
+        .check {
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            margin: .35rem 0;
+            color: var(--muted)
+        }
+
+            .check svg {
+                flex: 0 0 auto;
+                margin-top: .2rem
+            }
+
+        details {
+            background: var(--panel);
+            border: 1px solid var(--stroke);
+            border-radius: 14px;
+            padding: 14px
+        }
+
+            details + details {
+                margin-top: 10px
+            }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none
+        }
+
+            summary::-webkit-details-marker {
+                display: none
+            }
+
+        footer {
+            border-top: 1px solid var(--stroke);
+            padding: 24px 0;
+            color: var(--muted);
+            font-size: .95rem
+        }
+
+        .foot {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: space-between;
+            flex-wrap: wrap
+        }
+
+            .foot a {
+                color: inherit;
+                text-decoration: none
+            }
+
+                .foot a:hover {
+                    text-decoration: underline
+                }
+
+        .skip {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden
+        }
+
+            .skip:focus {
+                left: 10px;
+                top: 10px;
+                width: auto;
+                height: auto;
+                background: #fff;
+                padding: .5rem .8rem;
+                border-radius: 10px;
+                color: #111
+            }
+    </style>
+</head>
+<body>
+    <a class="skip" href="#content">Skip to main content</a>
+
+    <header>
+        <div class="container nav" aria-label="Navigation bar">
+            <a class="brand" href="#" aria-label="Go to top">
+                <svg viewBox="0 0 64 64" role="img" aria-label="Logo">
+                    <defs>
+                        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#0ea5e9" />
+                            <stop offset="100%" stop-color="#22c55e" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#g)" opacity=".22" />
+                    <path d="M32 16 48 44 H16 Z" fill="url(#g)" stroke="#0ea5e9" stroke-width="1.2" opacity=".9" />
+                    <circle cx="32" cy="28" r="4" fill="#0ea5e9" />
+                </svg>
+                Nova
+            </a>
+
+            <nav aria-label="Primary links">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-ctas">
+                <a class="btn btn-ghost" href="#pricing">View Plans</a>
+                <button class="btn btn-primary" onclick="document.getElementById('lead').scrollIntoView({behavior:'smooth'})">Get Started</button>
+                <button class="btn btn-ghost hamb" aria-label="Open menu" id="hamb">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="content">
+        <section class="hero container">
+            <div class="blob" aria-hidden="true"></div>
+            <span class="tag">New • Public Beta</span>
+            <h1>Launch your next product with <span style="background:linear-gradient(90deg,#0ea5e9,#22c55e);-webkit-background-clip:text;background-clip:text;color:transparent;">impact</span>.</h1>
+            <p>A modern, responsive, and accessible landing page — ready to turn visitors into customers. Integrate analytics, collect leads, and showcase your value in minutes.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="#pricing">Create My Account</a>
+                <a class="btn btn-ghost" href="#features" aria-label="Learn more about features">See Features</a>
+            </div>
+            <div class="glass" role="region" aria-label="Highlights">
+                <div class="tag">No code</div>
+                <div class="tag">SEO optimized</div>
+                <div class="tag">Fast loading</div>
+                <div class="tag">Accessible</div>
+            </div>
+        </section>
+
+        <section id="features" class="container">
+            <div class="head">
+                <h2>Features that matter</h2>
+                <p>Built with best practices in UX, performance, and accessibility so you can focus on what really matters: your business.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 6h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                    </div>
+                    <h3>Responsive Layout</h3>
+                    <p>Looks great on phones, tablets, and desktops with no extra tweaks.</p>
+                </div>
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                    </div>
+                    <h3>SEO Ready</h3>
+                    <p>Semantic markup, metadata, and speed to rank better on search.</p>
+                </div>
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 8v8m4-4H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                    </div>
+                    <h3>Lead Capture</h3>
+                    <p>Validated signup form and easy integrations with your tools.</p>
+                </div>
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                    </div>
+                    <h3>Accessible UI</h3>
+                    <p>Proper labels, keyboard navigation, and native components.</p>
+                </div>
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+                    </div>
+                    <h3>Dark/Light</h3>
+                    <p>Respects system theme via <code>prefers-color-scheme</code>.</p>
+                </div>
+                <div class="card">
+                    <div class="icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 5l6 6-6 6-6-6 6-6z" stroke="currentColor" stroke-width="2" /></svg>
+                    </div>
+                    <h3>No Dependencies</h3>
+                    <p>Single HTML file: minimal CSS + JS, easy to host anywhere.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="container">
+            <div class="head">
+                <h2>What our customers say</h2>
+                <p>Real results from teams who launched in a few hours.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <blockquote class="quote">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42'><rect width='42' height='42' rx='8' fill='%23e5e7eb'/></svg>" alt="">
+                        <div>
+                            <p>“Simple and elegant. I shipped the landing in an afternoon and got my first leads.”</p>
+                            <div class="who">— Ana Rivera, Founders Club</div>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="card">
+                    <blockquote class="quote">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42'><rect width='42' height='42' rx='8' fill='%23e5e7eb'/></svg>" alt="">
+                        <div>
+                            <p>“Clean code that plugs into any stack quickly.”</p>
+                            <div class="who">— Bruno Lee, Dev Lead</div>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="card">
+                    <blockquote class="quote">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42'><rect width='42' height='42' rx='8' fill='%23e5e7eb'/></svg>" alt="">
+                        <div>
+                            <p>“Truly accessible. Passed our usability checks out of the box.”</p>
+                            <div class="who">— Carla Mendes, UX Researcher</div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="container">
+            <div class="head">
+                <h2>Simple, transparent pricing</h2>
+                <p>Start free and upgrade when you need. No hidden fees.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <span class="tag">Starter</span>
+                    <div class="price"><span class="big">$0</span><span>/month</span></div>
+                    <p>Perfect to validate your idea.</p>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>1 page</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Basic form</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Host anywhere</div>
+                    <a class="btn btn-primary" href="#lead">Start Free</a>
+                </div>
+
+                <div class="card" style="border-color:#22c55e">
+                    <span class="tag">Pro • most popular</span>
+                    <div class="price"><span class="big">$9</span><span>/month</span></div>
+                    <p>For growing projects.</p>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Up to 5 pages</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Email integrations</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Basic analytics</div>
+                    <a class="btn btn-primary" href="#lead">Go Pro</a>
+                </div>
+
+                <div class="card">
+                    <span class="tag">Business</span>
+                    <div class="price"><span class="big">$29</span><span>/month</span></div>
+                    <p>For teams and advanced needs.</p>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Unlimited pages</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>CRM & Webhooks</div>
+                    <div class="check"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" /></svg>Priority support</div>
+                    <a class="btn btn-primary" href="#lead">Talk to Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="lead" class="container">
+            <div class="head">
+                <h2>Get started for free</h2>
+                <p>Fill in your details and receive a ready-to-use template.</p>
+            </div>
+
+            <form class="card" onsubmit="return handleSubmit(event)" aria-label="Signup form">
+                <div class="grid grid-2">
+                    <div>
+                        <label for="name">Name</label><br>
+                        <input id="name" name="name" required placeholder="Your name"
+                               style="width:100%;padding:.8rem;border-radius:10px;border:1px solid var(--stroke);background:var(--panel);color:var(--ink)">
+                    </div>
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input id="email" name="email" type="email" required placeholder="you@example.com"
+                               style="width:100%;padding:.8rem;border-radius:10px;border:1px solid var(--stroke);background:var(--panel);color:var(--ink)">
+                    </div>
+                </div>
+                <div style="margin-top:12px">
+                    <label for="project">About your project <span class="tag">optional</span></label><br>
+                    <textarea id="project" name="project" rows="4" placeholder="Briefly describe what you’re launching..."
+                              style="width:100%;padding:.8rem;border-radius:10px;border:1px solid var(--stroke);background:var(--panel);color:var(--ink)"></textarea>
+                </div>
+                <div style="display:flex;gap:.6rem;align-items:center;margin-top:12px">
+                    <input id="consent" type="checkbox" required>
+                    <label for="consent" style="color:var(--muted)">I agree to receive product communications.</label>
+                </div>
+                <div style="margin-top:14px;display:flex;gap:.6rem;flex-wrap:wrap">
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                    <a class="btn btn-ghost" href="#faq">Check FAQ</a>
+                    <span id="formStatus" class="tag" aria-live="polite" style="display:none"></span>
+                </div>
+            </form>
+        </section>
+
+        <section id="faq" class="container">
+            <div class="head">
+                <h2>Frequently asked questions</h2>
+                <p>Quick answers. If you need more, get in touch.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <details class="card">
+                    <summary>Can I host this anywhere?</summary>
+                    <p>Yes. It’s a static file that works on GitHub Pages, Netlify, Vercel, S3/CloudFront, and more.</p>
+                </details>
+                <details class="card">
+                    <summary>How do I integrate my form?</summary>
+                    <p>Point the <code>onsubmit</code> to your API, or use services like Formspree, Make, Zapier, or webhooks.</p>
+                </details>
+                <details class="card">
+                    <summary>Does it support analytics?</summary>
+                    <p>Insert your provider’s script (GA4, Plausible, PostHog, etc.) before <code>&lt;/body&gt;</code>.</p>
+                </details>
+                <details class="card">
+                    <summary>Is it accessible?</summary>
+                    <p>Yes — proper semantics, labels, ARIA states, and keyboard navigation.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="container" style="text-align:center;padding:72px 0">
+            <h2>Ready to launch?</h2>
+            <p style="color:var(--muted);max-width:680px;margin:8px auto 18px">Use this template as a starting point and publish in minutes. Customize colors, text, and sections for your brand.</p>
+            <a class="btn btn-primary" href="#lead">Get Started Free</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container foot">
+            <div style="display:flex;align-items:center;gap:.6rem">
+                <span class="tag">Nova</span>
+                <span>© <span id="year"></span> All rights reserved.</span>
+            </div>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                <a href="#faq">Help</a>
+                <a href="#" aria-disabled="true">Privacy Policy</a>
+                <a href="#" aria-disabled="true">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamb = document.getElementById('hamb');
+        const mobile = document.getElementById('mobileMenu');
+        function closeMobile() { mobile.classList.remove('open'); }
+        hamb?.addEventListener('click', () => mobile.classList.toggle('open'));
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const status = document.getElementById('formStatus');
+            status.style.display = 'inline-block';
+            status.textContent = 'Submitted! Check your email!';
+            e.target.reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
